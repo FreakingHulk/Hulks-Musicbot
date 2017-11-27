@@ -1,0 +1,20 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "Discord music bot",
+  "main": "index.js",
+  "engines": {
+    "node": "8.0.0"
+  },
+  "author": "",
+  "license": "N/A",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "opusscript": "^0.0.4",
+    "request": "^2.83.0",
+    "youtube-search": "^1.0.10",
+    "ytdl-core": "^0.18.2"
+  }
+}
