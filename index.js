@@ -72,9 +72,8 @@ console.log(`Now loading RBot Music...`)
 bot.on("message", function(message) {
   if (message.author.equals(bot.user)) return;
   if (message.author.bot) return;
-  if (!message.content.startsWith(`${prefix}music`)) return;
-
-  var args = message.content.substring(prefix.length + 6).split(" ");
+  if (message.content.indexOf(config.prefix) !== 0) return;
+  var args = message.content.substring(prefix.length).split(" ");
 
   console.log(args)
   switch (args[0].toLowerCase()) {
