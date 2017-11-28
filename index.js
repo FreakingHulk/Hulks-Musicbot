@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
-const prefix = require("../config.json").prefix
+const prefix = require("./config.json").prefix
 const ytapi = process.env.ytapikey
 const search = require('youtube-search');
 const YTDL = require("ytdl-core")
