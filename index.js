@@ -211,7 +211,7 @@ bot.on("ready", function() {
   console.log(`${bot.user.username} ready!`);
   console.log(``);
   // Set game
-  bot.user.setGame(config.prefix + "help");
+  bot.user.setGame(`${config.prefix}help | ${bot.guilds.array().length} guild(s)`);
 
 });
 
