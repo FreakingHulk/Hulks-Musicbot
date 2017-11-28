@@ -24,7 +24,7 @@ function play(connect, msg, bot) {
       .setColor("7289DA")
       .setAuthor(`${bot.user.username} Music`, bot.user.avatarURL)
       .setThumbnail(info.iurlmq)
-      .setDescription(`I will now start playing **${info.title}** in ${connect.channel.name}\n\n**By: **${info.author.name}\n**Requested By:** ${msg.author.tag}`)
+      .setDescription(`I will now start playing **${info.title}** in ${connect.channel.name}\n\n**By: **${info.author.name}`)
 
     msg.channel.send({
       embed: em
