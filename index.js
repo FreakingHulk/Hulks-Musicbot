@@ -155,7 +155,7 @@ bot.on("message", function(message) {
       var server = servers[message.guild.id];
       if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
       break;
-}));
+});
 
 bot.on("ready", function() {
   // Main Print
