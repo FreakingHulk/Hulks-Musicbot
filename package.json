@@ -10,7 +10,7 @@
     }
   },
   "author": "FHGDev",
-  "license": "MIT"
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^11.2.1",
     "ffmpeg": "^0.0.4",
