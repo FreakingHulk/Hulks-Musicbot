@@ -30,18 +30,16 @@ function play(connect, msg, bot) {
       embed: em
     }).then(m => m.delete(35000))
   });
-  server.dispatcher = connect.playStream(YTDL(server.queue[0], {
-    filter: "audioonly"
-  }));
+  server.dispatcher = msg.guild.voiceConnection.playStream(YTDL(server.queueList[0], { audioonly: true }), { passes: 3})
 
   server.queue.shift();
 
-  server.dispatcher.on("end", function() {
+  server.dispatcher.on("end", () => {
     if (server.queue[0]) {
       play(connect, msg, bot)
     } else {
       connect.disconnect()
-      console.log(`[PLER] Now stopped playing music in ${msg.guild.name}`)
+      console.log(`[PLR] Stopped playing music in ${msg.guild.name}`)
       let em = new Discord.RichEmbed()
         .setColor("7289DA")
         .setAuthor(`I have now stopped playing in ${connect.channel.name}`)
@@ -67,12 +65,11 @@ function errorhandle(err) {
   console.log(`[ERROR] ${err}`)
 }
 
-console.log(`Now loading RBot Music...`)
+console.log(`Now loading Banana Moosicbot Music...`)
 
-bot.on("message", function(message) {
-  if (message.author.equals(bot.user)) return;
+bot.on("message", message => {
   if (message.author.bot) return;
-  if (message.content.indexOf(config.prefix) !== 0) return;
+  if (message.content.startsWith(prefix)) return;
   var args = message.content.substring(prefix.length).split(" ");
 
   console.log(args)
@@ -95,17 +92,17 @@ bot.on("message", function(message) {
     case "play":
       if (!message.member.voiceChannel) {
         removedat(message)
-        message.channel.send(":x: Oh I forgot.. You need to be in a voice channel!")
+        message.channel.send(":x: You need to be in a voice channel!")
         break;
       }
       if (!message.member.voiceChannel.joinable || message.member.voiceChannel.full) {
         removedat(message)
-        message.channel.send(":x: Looks like I cannot join that voice channel.")
+        message.channel.send(":x: I cannot join that voice channel.")
         break;
       }
       if (!args[1]) {
         removedat(message)
-        message.channel.send(":x: Umm where's the link?")
+        message.channel.send(":x: You need to give me a link or a song/video name.")
         break;
       }
       if (!YTDL.validateURL(args[1])) {
@@ -122,7 +119,7 @@ bot.on("message", function(message) {
 
           server.queue.push(results[0].link);
 
-          if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+          if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(connection => {
             play(connection, message, bot);
           })
           removedat(message)
@@ -169,15 +166,15 @@ bot.on("ready", function() {
   console.log(`${bot.user.username} ready!`);
   console.log(``);
   // Set game
-  bot.user.setGame(`${config.prefix}help | ${bot.guilds.array().length} guild(s)`);
+  bot.user.setActivity(`for ${prefix}help | ${bot.guilds.size} guild(s)`, {type: "WATCHING"});
 });
-
+  
 bot.on("guildCreate", function() {
-  bot.user.setGame(`${config.prefix}help | ${bot.guilds.array().length} guild(s)`);
+  bot.user.setActivity(`for ${config.prefix}help | ${bot.guilds.size} guild(s)`, {type: "WATCHING"});
 });
 
 bot.on("guildDelete", function() {
-  bot.user.setGame(`${config.prefix}help | ${bot.guilds.array().length} guild(s)`);
+  bot.user.setActivity(`for ${config.prefix}help | ${bot.guilds.size} guild(s)`, {type: "WATCHING"});
 });
 
 bot.login(process.env.token)
