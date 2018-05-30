@@ -69,7 +69,7 @@ console.log(`Now loading Banana Moosicbot Music...`)
 
 bot.on("message", message => {
   if (message.author.bot) return;
-  if (message.content.startsWith(prefix)) return;
+  if (!message.content.startsWith(prefix)) return;
   var args = message.content.substring(prefix.length).split(" ");
 
   console.log(args)
@@ -83,7 +83,7 @@ bot.on("message", message => {
         .addField(`${prefix}help`, `Sends this message.`)
         .addField(`${prefix}play (Youtube link) or (field)`, `Plays a song in the current channel.`)
         .addField(`${prefix}skip`, `Skips the current song`)
-        .addField(`${prefix}stop`, `Skips the current songStops and ends everything`)
+        .addField(`${prefix}stop`, `Stops and ends everything.`)
 
       message.channel.send({
         embed: em
@@ -113,7 +113,7 @@ bot.on("message", message => {
             queue: []
           };
 
-          console.log(`[QUEUE] Added music to ${message.guild.name}'s queue!' `)
+          console.log(`[QUEUE] Added music to ${message.guild.name}'s queue!`)
 
           var server = servers[message.guild.id]
 
