@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "DJHulkbot",
   "version": "1.0.0",
   "description": "Discord music bot",
   "main": "index.js",
@@ -9,14 +9,18 @@
       "start": "node index.js"
     }
   },
-  "author": "",
-  "license": "N/A",
+  "author": "FHGDev",
+  "license": "MIT"
   "dependencies": {
     "discord.js": "^11.2.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
     "opusscript": "^0.0.4",
     "request": "^2.83.0",
+    "get-youtube-id": "latest",
+    "simple-youtube-api": "latest",
+    "youtube-info": "latest",
+    "youtube-node": "latest",
     "youtube-search": "^1.0.10",
     "ytdl-core": "^0.18.2"
   }
