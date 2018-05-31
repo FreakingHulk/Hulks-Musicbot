@@ -29,7 +29,7 @@ function play(connect, msg, bot) {
       embed: em
     }).then(m => m.delete(35000))
   });
-  server.dispatcher = msg.guild.voiceConnection.playStream(YTDL(server.queueList[0], { audioonly: true }), { passes: 3})
+  server.dispatcher = msg.guild.voiceConnection.playStream(YTDL(server.queue[0], { audioonly: true }), { passes: 3})
 
   server.queue.shift();
 
