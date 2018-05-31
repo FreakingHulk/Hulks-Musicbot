@@ -15,7 +15,7 @@
     "discord.js": "^11.2.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
-    "opusscript": "^0.0.4",
+    "node-opus": "latest",
     "request": "^2.83.0",
     "get-youtube-id": "latest",
     "simple-youtube-api": "latest",
