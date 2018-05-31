@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 const prefix = require("./config.json").prefix
-const ytapi = process.env.ytapikey
 const search = require('youtube-search');
 const YTDL = require("ytdl-core")
 const FFMPEG = require("ffmpeg");
@@ -13,7 +12,7 @@ var servers = {};
 var opts = {
   maxResults: 1,
   type: "video",
-  key: ytapi
+  key: process.env.ytapikey
 };
 
 function play(connect, msg, bot) {
